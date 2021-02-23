@@ -8,7 +8,7 @@
 	<h1>Registration Form Self</h1>
 
 	<?php
-		$firstNameErr = $lastNameErr = $gender= $email = $username= $password=$recoveryemail="";
+		$firstNameErr = $lastNameErr = $genderErr= $emailErr = $usernameErr= $passwordErr=$recoveryemailErr="";
 		$firstName = ""; 
 		$lastName = ""; 
 		$gender="";
@@ -34,7 +34,7 @@
 				$lastName = $_POST['lname'];
 			}
             if(empty($_POST['email'])) {
-				$email = "Please fill up the last name properly";
+				$emailErr = "Please fill up the last name properly";
 			}
 			else {
 				$email = $_POST['email'];
@@ -47,29 +47,35 @@
             }
 
             if(empty($_POST['username'])) {
-				$lastNameErr = "Please fill up the last name properly";
+				$usernameErr = "Please fill up the last user name properly";
 			}
 			else {
 				$username = $_POST['username'];
 			}
             if(empty($_POST['pass'])) {
-				$password = "Please fill up the Password properly";
+				$passwordErr = "Please fill up the Password properly";
 			}
 			else {
 				$password = $_POST['pass'];
 			}
             if(empty($_POST['remail'])) {
-				$recoveryemail = "Please fill up the last name properly";
+				$recoveryemailErr = "Please fill up the last recovery email properly";
 			}
 			else {
 				$recoveryemail = $_POST['remail'];
 			}
             if (!filter_var($recoveryemail, FILTER_VALIDATE_EMAIL)) {
-                $emailErr="Invalid mail";
+                $recoveryemailErr="Invalid mail";
             }
             else{
                 $recoveryemail=$_POST['remail'];
             }
+
+
+            $filepath = "data.txt";
+            $f = fopen($filepath,'w');
+            fwrite($f," First Name: $firstName \n Last Name: $lastName \n Email: $email \n Gender: $gender \n UserName: $username \n Password: $password \n Recovery Email: $recoveryemail");
+
 
 
 
@@ -107,23 +113,23 @@
 
         <label for="email">Email</label>
 		<input type="email" name="email" id="email" value="<?php echo $email ?>">
-		<p><?php echo $email; ?></p>
+		<p><?php echo $emailErr; ?></p>
 		
 		<br>
         <label for="username">Username</label>
 		<input type="text" name="username" id="username" value="<?php echo $username ?>">
-		<p><?php echo $username; ?></p>
+		<p><?php echo $usernameErr; ?></p>
 		
 		<br>
         <label for="password">Password</label>
 		<input type="password" name="pass" id="pass" value="<?php echo $password ?>">
-		<p><?php echo $password; ?></p>
+		<p><?php echo $passwordErr; ?></p>
 		
 		<br>
 
 		<label for="recoveremail">Recoveremail</label>
 		<input type="email" name="remail" id="remail" value="<?php echo $recoveryemail ?>">
-		<p><?php echo $recoveryemail; ?></p>
+		<p><?php echo $recoveryemailErr; ?></p>
 		
 		<br>
 
