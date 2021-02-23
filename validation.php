@@ -50,16 +50,16 @@
 				$lastNameErr = "Please fill up the last name properly";
 			}
 			else {
-				$lastName = $_POST['username'];
+				$username = $_POST['username'];
 			}
             if(empty($_POST['pass'])) {
-				$lastNameErr = "Please fill up the Password properly";
+				$password = "Please fill up the Password properly";
 			}
 			else {
-				$lastName = $_POST['pass'];
+				$password = $_POST['pass'];
 			}
             if(empty($_POST['remail'])) {
-				$email = "Please fill up the last name properly";
+				$recoveryemail = "Please fill up the last name properly";
 			}
 			else {
 				$recoveryemail = $_POST['remail'];
@@ -76,12 +76,7 @@
 
 
 
-			if(empty($_POST['website'])) {
-				$websiteErr = "Please fill up the website url properly";
-			}
-			else {
-				$website = $_POST['website'];
-			}
+			
 
 		
 		}
